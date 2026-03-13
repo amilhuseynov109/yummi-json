@@ -220,4 +220,57 @@ chefs.map(item =>
             </div>`
 )
 
+let gallery = [
+  {
+    img: "src/img/gallery-1.jpg",
+  },
+  {
+    img: "src/img/gallery-2.jpg",
+  },
+  {
+    img: "src/img/gallery-3.jpg",
+  },
+  {
+    img: "src/img/gallery-4.jpg",
+  },
+  {
+    img: "src/img/gallery-5.jpg",
+  },
+  {
+    img: "src/img/gallery-6.jpg",
+  },
+  {
+    img: "src/img/gallery-7.jpg",
+  },
+  {
+    img: "src/img/gallery-8.jpg",
+  },
+];
 
+
+document.addEventListener("DOMContentLoaded", function () {
+  let galleryData = document.getElementById("galleryData");
+  galleryData.innerHTML = gallery
+    .map((item) => {
+      return `<li class="splide__slide">
+        <img src="${item.img}" alt="" class="w-full h-[300px] object-cover" />
+      </li>`;
+    })
+    .join("");
+
+  new Splide("#gallery-slider", {
+    type: "loop",
+    perPage: 5,
+    perMove: 1,
+    gap: "10px",
+    focus: "center",
+    autoplay: true,
+    interval: 3000,
+    arrows: false,
+    pagination: true,
+    breakpoints: {
+      1024: { perPage: 3 },
+      640: { perPage: 1 },
+    },
+  }).mount();
+});
